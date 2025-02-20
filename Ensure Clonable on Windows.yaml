@@ -1,0 +1,14 @@
+name: Ensure Clonable on Windows
+
+on: [push, pull_request]
+
+jobs:
+  clone-repo:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Check if repository is clonable on Windows
+      run: git clone ${{ github.repository_url }} temp-clone
